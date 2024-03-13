@@ -19,4 +19,4 @@ Route::get('/', function () {
 });
 
 
-Route::post('/import-excel', [EventsController::class, 'parseEvent'])->name('import.excel');
+Route::post('parse', [EventsController::class, 'parseEvent'])->name('import.excel');

@@ -7,12 +7,17 @@ use App\Services\ExcelImportService;
 
 class EventsController extends Controller
 {
-    //
-    public function parseEvent(ExcelImportRequest $request, ExcelImportService $excelImportService)
+
+    public function __construct(private ExcelImportService $excelImportService)
+    {
+    }
+    public function parseEvent(ExcelImportRequest $request)
     {
         $file = $request->file('file');
-        $excelImportService->import($file);
+        $this->excelImportService->import($file);
 
-        return redirect()->back()->with('success', 'Excel file imported successfully.');
+        return response()->json([
+            'status' => 'success',
+        ]);
     }
 }
