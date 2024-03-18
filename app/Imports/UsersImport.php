@@ -2,6 +2,7 @@
 namespace App\Imports;
 
 use App\Models\Event;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
@@ -10,7 +11,7 @@ class UsersImport implements ToModel, WithStartRow
     public function model(array $row)
     {
         return new Event([
-            'date' => $row[0],
+            'date' => Carbon::create($row[0]),
             'dc' => $row[2],
             'ci' => $row[4],
             'co' => $row[6],

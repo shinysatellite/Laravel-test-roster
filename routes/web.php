@@ -18,5 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('event')->group(
+    function () {
+        Route::post('parse', [EventsController::class, 'parseEvent'])->name('events.parse');
+        Route::get('searchByDate', [EventsController::class, 'searchByDate'])->name('events.parse');
+    }
+);
 
-Route::post('parse', [EventsController::class, 'parseEvent'])->name('import.excel');
+
