@@ -7,6 +7,7 @@ use App\Http\Requests\SearchEventByDateRequest;
 use App\Models\Event;
 use App\Services\ExcelImportService;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
@@ -39,12 +40,31 @@ class EventsController extends Controller
      * @param SearchEventByDateRequest $request
      *
      */
-    public function searchByDate(SearchEventByDateRequest $request): array
+    public function searchByDate(SearchEventByDateRequest $request)
     {
         $startDate = Carbon::create($request->input('start_date'));
         $endDate = Carbon::create($request->input('end_date'));
 
         $events = Event::whereBetween('date', [$startDate, $endDate])
+            ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'events' => $events
+        ]);
+    }
+
+    /**
+     *
+     * @param SearchEventByDateRequest $request
+     *
+     */
+    public function searchNextWeekFlights(Request $request)
+    {
+        $current = Carbon::create('2022-01-14');
+        $oneWeekLater = $current->copy()->addWeeks(1);
+
+        $events = Event::whereBetween('date', [$current, $oneWeekLater])
             ->get();
 
         return response()->json([
