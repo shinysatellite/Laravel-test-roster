@@ -11,8 +11,9 @@ use App\Services\ExcelImportService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Routing\Controller as BaseController;
 
-class EventsController extends Controller
+class EventsController extends BaseController
 {
 
     public function __construct(private ExcelImportService $excelImportService, private EventService $eventService)
@@ -93,7 +94,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Get all Standby events for the next week
+     * Get all flights that start on the given location
      *
      * @param Request $request
      *
