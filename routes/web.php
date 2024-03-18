@@ -20,9 +20,10 @@ Route::get('/', function () {
 
 Route::prefix('event')->group(
     function () {
-        Route::post('parse', [EventsController::class, 'parseEvent'])->name('events.parse');
-        Route::get('searchByDate', [EventsController::class, 'searchByDate'])->name('events.parse');
-        Route::get('searchNextWeekFlights', [EventsController::class, 'searchNextWeekFlights'])->name('events.parse');
+        Route::post('parse', [EventsController::class, 'parseEvents'])->name('events.parse');
+        Route::get('searchByDate', [EventsController::class, 'searchByDate'])->name('events.searchByDate');
+        Route::get('searchNextWeekFlights', [EventsController::class, 'searchNextWeekFlights'])->name('events.searchNextWeekFlights');
+        Route::get('searchNextWeekStandbyEvents', [EventsController::class, 'searchNextWeekStandbyEvents'])->name('events.searchNextWeekStandbyEvents');
     }
 );
 
