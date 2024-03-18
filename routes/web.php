@@ -24,6 +24,7 @@ Route::prefix('event')->group(
         Route::get('searchByDate', [EventsController::class, 'searchByDate'])->name('events.searchByDate');
         Route::get('searchNextWeekFlights', [EventsController::class, 'searchNextWeekFlights'])->name('events.searchNextWeekFlights');
         Route::get('searchNextWeekStandbyEvents', [EventsController::class, 'searchNextWeekStandbyEvents'])->name('events.searchNextWeekStandbyEvents');
+        Route::get('searchAllFlightsWithStartLocation', [EventsController::class, 'searchAllFlightsWithStartLocation'])->name('events.searchAllFlightsWithStartLocation');
     }
 );
 

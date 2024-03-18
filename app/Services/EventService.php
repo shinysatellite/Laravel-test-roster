@@ -10,16 +10,19 @@ class EventService
 {
     public function getEventsByPeriod(Carbon $startDate, Carbon $endDate): Collection
     {
-        $events = Event::whereBetween('date', [$startDate, $endDate])
+        return Event::whereBetween('date', [$startDate, $endDate])
             ->get();
-        return $events;
     }
 
     public function getStatusEventsByPeriod(Carbon $startDate, Carbon $endDate, string $activity): Collection
     {
-        $events = Event::whereBetween('date', [$startDate, $endDate])
+        return Event::whereBetween('date', [$startDate, $endDate])
             ->where('activity', $activity)
             ->get();
-        return $events;
+    }
+
+    public function getAllFlightsWithStartLocation(string $location): Collection
+    {
+        return Event::where('from', $location)->get();
     }
 }

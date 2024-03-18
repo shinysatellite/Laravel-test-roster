@@ -75,7 +75,7 @@ class EventsController extends Controller
 
 
     /**
-     * Search all Standby events for the next week
+     * Get all Standby events for the next week
      *
      * @param Request $request
      *
@@ -88,6 +88,22 @@ class EventsController extends Controller
         $activity = ActivityConstant::STAND_BY;
 
         $events = $this->eventService->getStatusEventsByPeriod($current, $oneWeekLater, $activity);
+
+        return EventResource::collection($events);
+    }
+
+    /**
+     * Get all Standby events for the next week
+     *
+     * @param Request $request
+     *
+     * @return JsonResource
+     */
+    public function searchAllFlightsWithStartLocation(Request $request): JsonResource
+    {
+        $location = $request->input('location');
+
+        $events = $this->eventService->getAllFlightsWithStartLocation($location);
 
         return EventResource::collection($events);
     }
