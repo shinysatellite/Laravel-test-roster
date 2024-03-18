@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "08b71b51-64c2-4672-9119-1bbb5319f334",
+		"name": "roster",
+		"description": "This is laravel Roster app documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19377934"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "searchByDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/event/searchByDate?start_date=2022/1/11&end_date=2022/1/12",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"event",
+								"searchByDate"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2022/1/11",
+									"description": "Start date : required"
+								},
+								{
+									"key": "end_date",
+									"value": "2022/1/12",
+									"description": "End date : required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchNextWeekFlights",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/event/searchNextWeekFlights",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"event",
+								"searchNextWeekFlights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchNextWeekStandbyEvents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/event/searchNextWeekStandbyEvents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"event",
+								"searchNextWeekStandbyEvents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchAllFlightsWithStartLocation",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "location",
+									"value": "KRP",
+									"description": "location: required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/event/searchAllFlightsWithStartLocation?location=KRP",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"event",
+								"searchAllFlightsWithStartLocation"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "KRP"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "parse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/shiny/Develop/Test/1.home-test/Laravel/Untitled 1.xlsx",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/event/parse",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"event",
+						"parse"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}
