@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
             $table->string('dc')->nullable();
             $table->integer('ci')->nullable();
             $table->integer('co')->nullable();
@@ -23,7 +24,6 @@ return new class extends Migration {
             $table->string('sta');
             $table->string('ac')->nullable();
             $table->integer('blh')->nullable();
-            $table->date('date');
             $table->timestamps();
         });
     }
